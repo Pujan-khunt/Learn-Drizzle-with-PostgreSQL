@@ -1,6 +1,6 @@
 {
-	"id": "3e906212-7080-4d28-ac4f-3c38daf2bfc8",
-	"prevId": "1ba84579-0a0a-4a98-919c-767896eb9c71",
+	"id": "ec6eec94-b483-43e4-9947-223c06139af9",
+	"prevId": "3e906212-7080-4d28-ac4f-3c38daf2bfc8",
 	"version": "7",
 	"dialect": "postgresql",
 	"tables": {
@@ -48,6 +48,20 @@
 					"type": "integer",
 					"primaryKey": false,
 					"notNull": true
+				},
+				"updatedAt": {
+					"name": "updatedAt",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				},
+				"createdAt": {
+					"name": "createdAt",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
 				}
 			},
 			"indexes": {},
@@ -182,7 +196,8 @@
 					"name": "description",
 					"type": "text",
 					"primaryKey": false,
-					"notNull": false
+					"notNull": true,
+					"default": "'default description'"
 				},
 				"price": {
 					"name": "price",

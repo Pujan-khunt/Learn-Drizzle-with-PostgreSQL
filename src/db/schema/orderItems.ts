@@ -1,4 +1,5 @@
 import { integer, pgTable } from "drizzle-orm/pg-core";
+import { timestamps } from "../../lib/helpers";
 import { orders } from "./orders";
 import { products } from "./products";
 
@@ -12,6 +13,7 @@ const orderItems = pgTable("order_items", {
 		.notNull(),
 	quantity: integer().notNull(),
 	pricePerQuantity: integer().notNull(), // Price at the time of purchase (incase its changed later)
+	...timestamps(),
 });
 
 export { orderItems };
