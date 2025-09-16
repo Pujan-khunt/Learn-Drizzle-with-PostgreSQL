@@ -1,6 +1,6 @@
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import z from "zod";
-import { users } from "../../db/schema/users";
+import { users } from "@/db/schema/users";
 
 // Schema for creating a new user (e.g. for a registration form)
 export const insertUserSchema = createInsertSchema(users, {

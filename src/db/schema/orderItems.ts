@@ -1,7 +1,7 @@
 import { integer, pgTable } from "drizzle-orm/pg-core";
-import { timestamps } from "../../lib/helpers";
-import { orders } from "./orders";
-import { products } from "./products";
+import { orders } from "@/db/schema/orders";
+import { products } from "@/db/schema/products";
+import { timestamps } from "@/lib/helpers";
 
 const orderItems = pgTable("order_items", {
 	id: integer().notNull().generatedAlwaysAsIdentity(),

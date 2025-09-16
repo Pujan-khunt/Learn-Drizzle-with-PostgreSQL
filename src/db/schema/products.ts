@@ -1,5 +1,5 @@
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
-import { timestamps } from "../../lib/helpers";
+import { timestamps } from "@/lib/helpers";
 
 const products = pgTable("products", {
 	id: integer().notNull().primaryKey().generatedAlwaysAsIdentity(),

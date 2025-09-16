@@ -1,6 +1,6 @@
 import { integer, pgEnum, pgTable } from "drizzle-orm/pg-core";
-import { timestamps } from "../../lib/helpers";
-import { users } from "./users";
+import { users } from "@/db/schema/users";
+import { timestamps } from "@/lib/helpers";
 
 const orderStatusEnum = pgEnum("order_status", [
 	"pending",

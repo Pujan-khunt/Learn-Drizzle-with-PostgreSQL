@@ -1,5 +1,5 @@
 import { integer, pgEnum, pgTable, text, varchar } from "drizzle-orm/pg-core";
-import { timestamps } from "../../lib/helpers";
+import { timestamps } from "@/lib/helpers";
 
 const userRoleEnum = pgEnum("user_role", ["admin", "customer"]);
 
