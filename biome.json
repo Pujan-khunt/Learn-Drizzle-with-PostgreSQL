@@ -1,11 +1,19 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
 	"vcs": {
-		"enabled": false,
+		"enabled": true,
 		"clientKind": "git",
-		"useIgnoreFile": false
+		"useIgnoreFile": true
 	},
 	"files": {
+		"includes": [
+			"src/**/*.{ts,mjs,tsx}",
+			"drizzle.config.ts",
+			"next-env.d.ts",
+			"next.config.ts",
+			"package.json",
+			"tsconfig.json"
+		],
 		"ignoreUnknown": false
 	},
 	"formatter": {

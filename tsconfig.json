@@ -1,53 +1,45 @@
 {
-  "compilerOptions": {
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "target": "es2017",
-    "types": [
-      "node"
-    ],
-    "lib": [
-      "esnext",
-      "DOM",
-      "DOM.Iterable"
-    ],
-		
-    "allowJs": true,
-    "noEmit": true,
-    "incremental": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "strict": true,
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "baseUrl": "src/",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "resolveJsonModule": true
-  },
-  "include": [
-    "src/**/*.{ts,js,tsx,jsx}",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "out"
-  ]
+	"compilerOptions": {
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"target": "es2017",
+		"types": ["node"],
+		"lib": ["esnext", "DOM", "DOM.Iterable"],
+
+		"allowJs": true,
+		"noEmit": true,
+		"incremental": true,
+		"jsx": "preserve",
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"sourceMap": true,
+		"declaration": true,
+		"declarationMap": true,
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+		"strict": true,
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
+		"noUncheckedSideEffectImports": true,
+		"moduleDetection": "force",
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"baseUrl": "./src/",
+		"paths": {
+			"@/*": ["./*"]
+		},
+		"resolveJsonModule": true
+	},
+	// tsconfig.json doesn't support src/**/*.{ts,mjs,tsx}
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.mjs",
+		"src/**/*.tsx",
+		"next-env.d.ts",
+		".next/types/**/*.ts"
+	],
+	"exclude": ["node_modules", "out"]
 }
