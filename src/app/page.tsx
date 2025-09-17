@@ -1,7 +1,9 @@
+import { HeroHeader } from "@/components/header";
+
 const HomePage = () => {
 	return (
 		<div>
-			<h1 className="text-red-500 text-4xl">Hello</h1>
+			<HeroHeader />
 		</div>
 	);
 };
