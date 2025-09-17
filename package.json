@@ -29,12 +29,15 @@
 		"typescript": "^5.9.2"
 	},
 	"dependencies": {
+		"@tailwindcss/postcss": "^4.1.13",
 		"drizzle-orm": "^0.44.5",
 		"drizzle-zod": "^0.8.3",
 		"next": "^15.5.3",
 		"pg": "^8.16.3",
+		"postcss": "^8.5.6",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
+		"tailwindcss": "^4.1.13",
 		"zod": "^4.1.8"
 	}
 }
