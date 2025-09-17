@@ -1,23 +1,25 @@
 {
 	"compilerOptions": {
-		"rootDir": "./src",
-		"outDir": "./dist",
 		"module": "esnext",
 		"moduleResolution": "bundler",
-		"target": "es2022",
+		"target": "es2017",
 		"types": ["node"],
-		"lib": ["esnext"],
+		"lib": ["esnext", "DOM", "DOM.Iterable"],
 
-		// Other Outputs
+		"allowJs": true,
+		"noEmit": true,
+		"incremental": true,
+		"jsx": "preserve",
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
 		"sourceMap": true,
 		"declaration": true,
 		"declarationMap": true,
-
-		// Stricter Typechecking Options
 		"noUncheckedIndexedAccess": true,
 		"exactOptionalPropertyTypes": true,
-
-		// Recommended Options
 		"strict": true,
 		"verbatimModuleSyntax": true,
 		"isolatedModules": true,
@@ -25,13 +27,19 @@
 		"moduleDetection": "force",
 		"skipLibCheck": true,
 		"esModuleInterop": true,
-
-		// files
-		"baseUrl": "src",
+		"baseUrl": "./src/",
 		"paths": {
 			"@/*": ["./*"]
-		}
+		},
+		"resolveJsonModule": true
 	},
-	"include": ["src/**/*"],
-	"exclude": ["node_modules", "dist"]
+	// tsconfig.json doesn't support src/**/*.{ts,mjs,tsx}
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.mjs",
+		"src/**/*.tsx",
+		"next-env.d.ts",
+		".next/types/**/*.ts"
+	],
+	"exclude": ["node_modules", "out"]
 }

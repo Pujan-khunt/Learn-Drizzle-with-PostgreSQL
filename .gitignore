@@ -1,2 +1,6 @@
 .env
 node_modules/
+.next/
+out/
+.vscode
+.DS_STORE
