@@ -1,7 +1,7 @@
 const HomePage = () => {
 	return (
 		<div>
-			<h1>Next.js</h1>
+			<h1 className="text-red-500 text-4xl">Hello</h1>
 		</div>
 	);
 };

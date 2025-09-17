@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "next dev",
-		"build": "next dev",
+		"build": "next build",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"lint": "biome lint --write",
