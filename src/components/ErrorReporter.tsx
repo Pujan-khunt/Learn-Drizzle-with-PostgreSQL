@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 type ReporterProps = {
 	/*  ⎯⎯ props are only provided on the global-error page ⎯⎯ */
 	error?: Error & { digest?: string };
-	reset?: () => void;
+	// reset?: () => void;
 };
 
 export default function ErrorReporter({ error }: ReporterProps) {
@@ -104,7 +104,8 @@ export default function ErrorReporter({ error }: ReporterProps) {
 							Something went wrong!
 						</h1>
 						<p className="text-muted-foreground">
-							An unexpected error occurred. Please try again fixing with Orchids
+							An unexpected error occurred. If it doesn't work try contacting
+							the developer.
 						</p>
 					</div>
 					<div className="space-y-2">
