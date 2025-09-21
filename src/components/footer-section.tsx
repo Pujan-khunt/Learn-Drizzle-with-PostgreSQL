@@ -25,12 +25,6 @@ interface Footer2Props {
 }
 
 const Footer2 = ({
-	logo = {
-		src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face&auto=format",
-		alt: "ShopHub logo",
-		title: "ShopHub",
-		url: "/",
-	},
 	tagline = "Your trusted online marketplace.",
 	menuItems = [
 		{

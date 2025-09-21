@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "@/styles/global.css";
+import ErrorReporter from "./global-error";
 import { HeroHeader } from "@/components/header";
-import ErrorReporter from "@/components/ErrorReporter";
 
 export const metadata: Metadata = {
 	title: "Next.js application",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
 	return (
-		<html lang="en">
+		<html lang="en" className="dark">
 			<body>
 				<HeroHeader />
 				<ErrorReporter />
