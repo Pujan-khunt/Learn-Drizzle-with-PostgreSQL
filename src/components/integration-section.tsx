@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Eye, Heart, ShoppingCart, Star } from "lucide-react";
 import Link from "next/link";
 import { InfiniteSlider } from "@/components/infinite-slider";
-import { ShoppingCart, Star, Heart, Eye } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function FeaturedProductsSection() {
 	return (

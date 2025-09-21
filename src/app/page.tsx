@@ -1,4 +1,5 @@
 import FeaturesSection from "@/components/features-section";
+import { Footer2 } from "@/components/footer-section";
 import { HeroHeader } from "@/components/header";
 import HeroSection from "@/components/hero-section";
 import { HowItWorks } from "@/components/how-it-works";
@@ -12,6 +13,7 @@ const HomePage = () => {
 			<FeaturesSection />
 			<TextRevealSection />
 			<HowItWorks />
+			<Footer2 />
 		</div>
 	);
 };

@@ -1,4 +1,6 @@
 "use client";
+import { ShoppingCart, Star } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import {
@@ -9,8 +11,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "./ui/card";
-import { Star, ShoppingCart } from "lucide-react";
-import { motion } from "motion/react";
 
 // Mock product data - in real app this would come from your database
 const products = [
@@ -71,7 +71,7 @@ export default function PricingSection() {
 			</div>
 
 			<div className="mt-8 grid gap-6 md:mt-20 md:grid-cols-3">
-				{products.map((product, index) => (
+				{products.map((product, _index) => (
 					<Card
 						key={product.id}
 						className="flex flex-col hover:shadow-lg transition-shadow"
