@@ -13,6 +13,7 @@ const menuItems = [
 	{ id: 3, name: "New Arrivals", href: "/new-arrivals" },
 	{ id: 4, name: "Best Sellers", href: "/best-sellers" },
 	{ id: 5, name: "About", href: "/about" },
+	{ id: 6, name: "Products", href: "/products" },
 ];
 
 export const HeroHeader = () => {
