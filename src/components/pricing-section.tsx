@@ -1,8 +1,13 @@
 "use client";
 import { ShoppingCart, Star } from "lucide-react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import CoffeeMakerImage from "@/public/coffeemaker.jpg";
+import FitnessTrackerImage from "@/public/fitnesstracker.jpg";
+import WirelessHeadphonesImage from "@/public/headphones.jpg";
+
 import {
 	Card,
 	CardContent,
@@ -12,37 +17,42 @@ import {
 	CardTitle,
 } from "./ui/card";
 
-// Mock product data - in real app this would come from your database
 const products = [
 	{
 		id: 1,
 		name: "Wireless Bluetooth Headphones",
 		price: 79.99,
 		originalPrice: 99.99,
+		image: WirelessHeadphonesImage,
 		rating: 4.5,
 		reviews: 1250,
-		image: "/api/placeholder/300/300",
 		badge: "Best Seller",
+		height: 600,
+		width: 400,
 	},
 	{
 		id: 2,
 		name: "Premium Coffee Maker",
 		price: 149.99,
 		originalPrice: null,
+		image: CoffeeMakerImage,
 		rating: 4.7,
 		reviews: 890,
-		image: "/api/placeholder/300/300",
 		badge: "Popular",
+		height: 600,
+		width: 400,
 	},
 	{
 		id: 3,
 		name: "Smart Fitness Tracker",
 		price: 199.99,
 		originalPrice: 249.99,
+		image: FitnessTrackerImage,
 		rating: 4.3,
 		reviews: 2100,
-		image: "/api/placeholder/300/300",
 		badge: null,
+		height: 600,
+		width: 400,
 	},
 ];
 
@@ -84,10 +94,12 @@ export default function PricingSection() {
 
 						<CardHeader className="pb-2">
 							<div className="aspect-square bg-muted rounded-lg mb-4 flex items-center justify-center">
-								<img
+								<Image
 									src={product.image}
 									alt={product.name}
 									className="w-full h-full object-cover rounded-lg"
+									width={product.width}
+									height={product.height}
 								/>
 							</div>
 							<CardTitle className="font-medium text-base leading-tight">
