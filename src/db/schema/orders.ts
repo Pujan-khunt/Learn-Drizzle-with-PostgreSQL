@@ -1,15 +1,9 @@
-import {
-	integer,
-	pgEnum,
-	pgTable,
-	timestamp,
-	decimal,
-	text,
-} from "drizzle-orm/pg-core";
+import { integer, pgEnum, pgTable, decimal, text } from "drizzle-orm/pg-core";
 import { users } from "./users";
 import { relations } from "drizzle-orm";
 import { orderItems } from "./orderItems";
 import { payments } from "./payments";
+import { timestamps } from "@/lib/helpers";
 
 // Enum for order status
 export const orderStatusEnum = pgEnum("order_status", [
@@ -30,8 +24,7 @@ export const orders = pgTable("orders", {
 	status: orderStatusEnum("status").default("pending").notNull(),
 	total: decimal("total", { precision: 10, scale: 2 }).notNull(),
 	shippingAddress: text("shipping_address").notNull(), // Storing as denormalized JSON string or text
-	createdAt: timestamp("created_at").defaultNow().notNull(),
-	updatedAt: timestamp("updated_at").defaultNow().notNull(),
+	...timestamps(),
 });
 
 // Defining relations for the orders table

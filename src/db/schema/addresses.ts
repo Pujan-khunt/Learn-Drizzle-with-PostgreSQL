@@ -4,7 +4,7 @@ import { relations } from "drizzle-orm";
 
 // The addresses table definition
 export const addresses = pgTable("addresses", {
-	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
 	userId: integer("user_id")
 		.notNull()
 		.references(() => users.id, { onDelete: "cascade" }), // Foreign key to users table

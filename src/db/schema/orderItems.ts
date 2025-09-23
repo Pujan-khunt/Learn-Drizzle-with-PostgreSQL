@@ -5,7 +5,7 @@ import { relations } from "drizzle-orm";
 
 // The order_items table definition
 export const orderItems = pgTable("order_items", {
-	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
 	orderId: integer("order_id")
 		.notNull()
 		.references(() => orders.id, { onDelete: "cascade" }),

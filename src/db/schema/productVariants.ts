@@ -4,7 +4,7 @@ import { relations } from "drizzle-orm";
 
 // The product_variants table definition
 export const productVariants = pgTable("product_variants", {
-	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
 	productId: integer("product_id")
 		.notNull()
 		.references(() => products.id, { onDelete: "cascade" }), // Foreign key to products table

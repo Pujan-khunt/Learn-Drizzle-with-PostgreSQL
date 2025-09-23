@@ -1,29 +1,22 @@
-import {
-	pgEnum,
-	pgTable,
-	text,
-	varchar,
-	timestamp,
-	integer,
-} from "drizzle-orm/pg-core";
+import { pgEnum, pgTable, text, varchar, integer } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 import { addresses } from "./addresses";
 import { orders } from "./orders";
 import { reviews } from "./reviews";
 import { cart } from "./cart";
+import { timestamps } from "@/lib/helpers";
 
 // Using pgEnum to define a user_role enum type
 export const userRoleEnum = pgEnum("user_role", ["admin", "customer"]);
 
 // The users table definition
 export const users = pgTable("users", {
-	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
 	fullName: varchar("full_name", { length: 255 }).notNull(),
 	email: varchar("email", { length: 255 }).notNull().unique(),
 	passwordHash: text("password_hash").notNull(),
 	role: userRoleEnum("role").default("customer").notNull(),
-	createdAt: timestamp("created_at").defaultNow().notNull(),
-	updatedAt: timestamp("updated_at").defaultNow().notNull(),
+	...timestamps(),
 });
 
 // Defining relations for the users table

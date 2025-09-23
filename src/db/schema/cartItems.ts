@@ -6,7 +6,7 @@ import { productVariants } from "./productVariants";
 
 // The cart_items table definition
 export const cartItems = pgTable("cart_items", {
-	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
 	cartId: integer("cart_id")
 		.notNull()
 		.references(() => cart.id, { onDelete: "cascade" }),

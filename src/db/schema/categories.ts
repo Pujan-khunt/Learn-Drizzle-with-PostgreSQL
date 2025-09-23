@@ -4,7 +4,7 @@ import { productToCategory } from "./productToCategory";
 
 // The categories table definition
 export const categories = pgTable("categories", {
-	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
 	name: varchar("name", { length: 255 }).notNull().unique(),
 	description: text("description"),
 });

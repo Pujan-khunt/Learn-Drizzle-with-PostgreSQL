@@ -2,12 +2,12 @@ import {
 	integer,
 	pgEnum,
 	pgTable,
-	timestamp,
 	decimal,
 	varchar,
 } from "drizzle-orm/pg-core";
 import { orders } from "./orders";
 import { relations } from "drizzle-orm";
+import { timestamps } from "@/lib/helpers";
 
 // Enum for payment status
 export const paymentStatusEnum = pgEnum("payment_status", [
@@ -19,7 +19,7 @@ export const paymentStatusEnum = pgEnum("payment_status", [
 
 // The payments table definition
 export const payments = pgTable("payments", {
-	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
 	orderId: integer("order_id")
 		.notNull()
 		.references(() => orders.id, { onDelete: "cascade" })
@@ -28,8 +28,7 @@ export const payments = pgTable("payments", {
 	status: paymentStatusEnum("status").default("pending").notNull(),
 	provider: varchar("provider", { length: 50 }).notNull(), // e.g., 'stripe', 'paypal'
 	transactionId: varchar("transaction_id", { length: 255 }), // From the payment provider
-	createdAt: timestamp("created_at").defaultNow().notNull(),
-	updatedAt: timestamp("updated_at").defaultNow().notNull(),
+	...timestamps(),
 });
 
 // Defining relations for the payments table
