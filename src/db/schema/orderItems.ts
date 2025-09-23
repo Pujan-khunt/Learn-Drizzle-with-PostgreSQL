@@ -1,19 +1,34 @@
-import { integer, pgTable } from "drizzle-orm/pg-core";
-import { orders } from "@/db/schema/orders";
-import { products } from "@/db/schema/products";
-import { timestamps } from "@/lib/helpers";
+import { integer, pgTable, decimal, text } from "drizzle-orm/pg-core";
+import { orders } from "./orders";
+import { products } from "./products";
+import { relations } from "drizzle-orm";
 
-const orderItems = pgTable("order_items", {
-	id: integer().notNull().generatedAlwaysAsIdentity(),
-	orderId: integer()
-		.references(() => orders.id)
-		.notNull(),
-	productId: integer()
-		.references(() => products.id)
-		.notNull(),
-	quantity: integer().notNull(),
-	pricePerQuantity: integer().notNull(), // Price at the time of purchase (incase its changed later)
-	...timestamps(),
+// The order_items table definition
+export const orderItems = pgTable("order_items", {
+	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	orderId: integer("order_id")
+		.notNull()
+		.references(() => orders.id, { onDelete: "cascade" }),
+	productId: integer("product_id")
+		.notNull()
+		.references(() => products.id, { onDelete: "set null" }), // Keep item in order history
+	quantity: integer("quantity").notNull(),
+	pricePerQuantity: decimal("price_per_quantity", {
+		precision: 10,
+		scale: 2,
+	}).notNull(),
+	// Store variant details as a denormalized string or JSON
+	productVariant: text("product_variant"),
 });
 
-export { orderItems };
+// Defining relations for the order_items table
+export const orderItemsRelations = relations(orderItems, ({ one }) => ({
+	order: one(orders, {
+		fields: [orderItems.orderId],
+		references: [orders.id],
+	}),
+	product: one(products, {
+		fields: [orderItems.productId],
+		references: [products.id],
+	}),
+}));

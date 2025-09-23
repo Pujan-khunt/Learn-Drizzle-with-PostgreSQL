@@ -1,15 +1,42 @@
-import { integer, pgEnum, pgTable, text, varchar } from "drizzle-orm/pg-core";
-import { timestamps } from "@/lib/helpers";
+import {
+	pgEnum,
+	pgTable,
+	text,
+	varchar,
+	timestamp,
+	integer,
+} from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
+import { addresses } from "./addresses";
+import { orders } from "./orders";
+import { reviews } from "./reviews";
+import { cart } from "./cart";
 
-const userRoleEnum = pgEnum("user_role", ["admin", "customer"]);
+// Using pgEnum to define a user_role enum type
+export const userRoleEnum = pgEnum("user_role", ["admin", "customer"]);
 
-const users = pgTable("users", {
-	id: integer().notNull().primaryKey().generatedAlwaysAsIdentity(),
-	fullName: varchar({ length: 255 }).notNull(),
-	email: varchar({ length: 255 }).notNull().unique(),
-	passwordHash: text().notNull(),
-	role: userRoleEnum().default("customer").notNull(),
-	...timestamps(),
+// The users table definition
+export const users = pgTable("users", {
+	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	fullName: varchar("full_name", { length: 255 }).notNull(),
+	email: varchar("email", { length: 255 }).notNull().unique(),
+	passwordHash: text("password_hash").notNull(),
+	role: userRoleEnum("role").default("customer").notNull(),
+	createdAt: timestamp("created_at").defaultNow().notNull(),
+	updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-export { userRoleEnum, users };
+// Defining relations for the users table
+export const usersRelations = relations(users, ({ one, many }) => ({
+	// A user can have many addresses (one-to-many)
+	addresses: many(addresses),
+	// A user can place many orders (one-to-many)
+	orders: many(orders),
+	// A user can write many reviews (one-to-many)
+	reviews: many(reviews),
+	// A user has one cart (one-to-one)
+	cart: one(cart, {
+		fields: [users.id],
+		references: [cart.userId],
+	}),
+}));
